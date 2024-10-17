@@ -67,12 +67,46 @@
   font-size: 16px;
   cursor: pointer;
 }
+
 ul li {
   position: relative;
   padding: 12px 8px 12px 50px;
   list-style: none;
   font-size: 17px;
+  font-weight: 600;
   user-select: none;
   cursor: pointer;
+  color: #3c3c3c;
 }
+ul li .check-icon {
+  position: absolute;
+  font-size: 25px;
+  top: 10px;
+  left: 10px;
+}
+ul li.checked {
+  color: #a2a2a6;
+  text-decoration: line-through;
+}
+ul li .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 0;
 
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  padding-right: 10px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+}
+ul li button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+ul li .close-icon:hover {
+  color: #2ed573;
+  transform: scale(1.1);
+}

@@ -10,6 +10,9 @@ const App = () => {
     setItems((currentItems) => [...currentItems, item]);
   };
 
+  const handleDeleteItem = (id) => {
+    setItems((newItems) => newItems.filter((item) => item.id !== id));
+  };
   return (
     <div className="container">
       <div className="todo-app">
@@ -21,7 +24,11 @@ const App = () => {
         <div className="list-container">
           <ul>
             {items.map((item) => (
-              <ItemList key={item.id} {...item} />
+              <ItemList
+                key={item.id}
+                {...item}
+                onDeleteItem={handleDeleteItem}
+              />
             ))}
           </ul>
         </div>
