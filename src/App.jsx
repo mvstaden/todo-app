@@ -6,6 +6,14 @@ import ItemList from "./components/ItemList";
 const App = () => {
   const [items, setItems] = useState([]);
 
+  const handleCheckedToggle = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
   const handleAddItem = (item) => {
     setItems((currentItems) => [...currentItems, item]);
   };
@@ -21,17 +29,11 @@ const App = () => {
           <LuListTodo className="todo-icon" />
         </div>
         <Form onAddItems={handleAddItem} />
-        <div className="list-container">
-          <ul>
-            {items.map((item) => (
-              <ItemList
-                key={item.id}
-                {...item}
-                onDeleteItem={handleDeleteItem}
-              />
-            ))}
-          </ul>
-        </div>
+        <ItemList
+          items={items}
+          onDeleteItem={handleDeleteItem}
+          onCheckedToggle={handleCheckedToggle}
+        />
       </div>
     </div>
   );
