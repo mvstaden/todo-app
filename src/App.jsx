@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LuListTodo } from "react-icons/lu";
 
 import Form from "./components/Form";
 import ItemList from "./components/ItemList";
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [todoList, setTodoList] = useState(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos"))
+      : []
+  );
 
   const handleCheckedToggle = (id) => {
-    setItems((items) =>
+    setTodoList((items) =>
       items.map((item) =>
         item.id === id ? { ...item, checked: !item.checked } : item
       )
@@ -15,12 +19,16 @@ const App = () => {
   };
 
   const handleAddItem = (item) => {
-    setItems((currentItems) => [...currentItems, item]);
+    setTodoList((currentItems) => [...currentItems, item]);
   };
 
   const handleDeleteItem = (id) => {
-    setItems((newItems) => newItems.filter((item) => item.id !== id));
+    setTodoList((newItems) => newItems.filter((item) => item.id !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todoList));
+  }, [todoList]);
   return (
     <div className="container">
       <div className="todo-app">
@@ -30,7 +38,7 @@ const App = () => {
         </div>
         <Form onAddItems={handleAddItem} />
         <ItemList
-          items={items}
+          todoList={todoList}
           onDeleteItem={handleDeleteItem}
           onCheckedToggle={handleCheckedToggle}
         />

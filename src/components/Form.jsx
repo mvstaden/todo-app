@@ -5,8 +5,8 @@ const Form = ({ onAddItems }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!item) return;
-
-    const newItem = { item, checked: true, id: crypto.randomUUID() };
+    
+    const newItem = { item, checked: false, id: crypto.randomUUID() };
 
     onAddItems(newItem);
     setItem("");

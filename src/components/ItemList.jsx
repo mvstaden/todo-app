@@ -1,9 +1,9 @@
 import Item from "./Item";
 
-const ItemList = ({ items, onDeleteItem, onCheckedToggle }) => {
+const ItemList = ({ todoList, onDeleteItem, onCheckedToggle }) => {
   return (
     <ul>
-      {items.map((item) => (
+      {todoList.map((item) => (
         <Item
           key={item.id}
           {...item}
