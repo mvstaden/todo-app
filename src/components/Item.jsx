@@ -1,7 +1,7 @@
 import {
   MdOutlineRadioButtonUnchecked,
   MdOutlineRadioButtonChecked,
-  MdOutlineClose,
+  MdDeleteOutline,
 } from "react-icons/md";
 
 const Item = ({ id, item, checked, onDeleteItem, onCheckedToggle }) => {
@@ -15,7 +15,10 @@ const Item = ({ id, item, checked, onDeleteItem, onCheckedToggle }) => {
         <MdOutlineRadioButtonUnchecked className="check-icon" />
       )}
       <p>{item}</p>
-      <MdOutlineClose onClick={() => onDeleteItem(id)} className="close-icon" />
+      <MdDeleteOutline
+        onClick={() => onDeleteItem(id)}
+        className="close-icon"
+      />
     </li>
   );
 };
